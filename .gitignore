@@ -1,0 +1,5 @@
+/dist/
+/deploy.sh
+*.test
+*.prof
+config.json
