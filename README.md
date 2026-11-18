@@ -1,6 +1,6 @@
 # SeeBarSideCar
 
-一套键鼠控制一台 Windows 和一台 Apple Silicon Mac，局域网直连。程序名 `magic`。
+一套键鼠控制一台 Windows 和一台 Mac，局域网直连。
 
 - 鼠标移过屏幕边缘切到另一台
 - 剪贴板同步：文本、图片、文件
@@ -55,16 +55,12 @@ Windows（`config.json`）：
 
 | 字段 | 默认 | 说明 |
 | --- | --- | --- |
-| `listen` | `:24800` | 本机监听地址 |
 | `swap_cmd_ctrl` | `true` | Cmd / Ctrl 互换 |
 | `clipboard` | `true` | 剪贴板同步 |
 | `file_clip_max_mb` | `2048` | 文件复制大小上限，`-1` 关闭 |
 | `virtual_display` | `true` | 允许窗口拖到对方屏幕 |
-| `switch_delay_ms` | `120` | 在边缘停多久才切换，负数立即切 |
+| `switch_delay_ms` | `120` | 在边缘停多久才切换 |
 | `mouse_scale` | `1.0` | 控制对方时的鼠标速度 |
-| `fps` | `15` | 跨屏窗口帧率 |
-| `jpeg_quality` | `70` | 跨屏窗口画质 |
-| `panel` | `127.0.0.1:24801` | 状态页地址 |
 
 ## 运行
 
@@ -108,7 +104,6 @@ open /Applications/Magic.app --args -config ~/magic.json
 
 ```bash
 go test -race ./...
-(cd third_party/kcp-go && go test -race ./...)
 ```
 
-改了线上协议就把 `internal/proto` 里的 `Version` 加一。`third_party/kcp-go` 是修改过的 [kcp-go](https://github.com/xtaci/kcp-go)，改动见 [FORK.md](third_party/kcp-go/FORK.md)，MIT 许可。
+改了通信协议就把 `internal/proto` 里的 `Version` 加一。
